@@ -1,0 +1,9 @@
+---
+architecture: standalone
+ip_addr_sa: '1.1.1.1'
+ip_addr_pri: '1.1.1.1'
+ip_addr_sec: '2.2.2.2'
+user: username
+password: password
+image_location: 'disk0:'
+source_image: image.bin

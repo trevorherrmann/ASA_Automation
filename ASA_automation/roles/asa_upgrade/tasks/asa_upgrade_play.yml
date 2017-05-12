@@ -1,0 +1,25 @@
+---
+- name: ASA Upgrade Play
+
+    vars_prompt:
+        - name: "architecture"
+          prompt: "Is this a standalone ASA or a pair[standalone|pair]"
+        - name: "ip_addr_sa"
+          prompt: "What is the IP address of the standalone ASA? (leave blank if pair)"
+        - name: "ip_addr_pair"
+          prompt: "What is the IP address of the secondary ASA in the pair? (leave blank if standalone)"
+        - name: "user"
+          prompt: "Please enter your username: "
+        - name: "password"
+          prompt: "Please enter your passowrd: "
+          private: yes
+        - name: "image_location"
+          prompt: "Please enter the image location in the file system (i.e. disk0:): "
+        - name: "source_image"
+          prompt: "Please enter the source image filename: "
+
+- template:
+    src: templates/asa_upgrade.j2
+    dest: "/var/www/cisco-configs/asa_upgrade.py"
+
+- command: "python /var/www/cisco-configs/asa_upgrade.py"
